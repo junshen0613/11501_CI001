@@ -15,7 +15,7 @@
 This repository stores assignments, projects, and documentation for the CI001 course.
 
 ## GitHub Pages Site
-Visit my personal website: [https://github.com/junshen0613](https://github.com/junshen0613)
+Visit my personal website: [https://github.com/junshen0613/junshen.github.io](https://github.com/junshen0613/junshen.github.io)
 
 ## Directory Structure
 - `hw1/`: Git, GitHub & GitHub Pages setup
