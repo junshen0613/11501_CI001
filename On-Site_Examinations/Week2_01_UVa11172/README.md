@@ -8,7 +8,7 @@
 - **Language / Version:** C++ (C++17)
 - **Submission Result:** Accepted (First Submission AC)
 - **Source Code (Initial/Fail):** N/A（本題首次提交即取得 Accepted，無退件之 Fail Code；以下第 5 節對照撰寫過程中的「未完成單筆草稿」與「最終 AC 版本」）
-- **Source Code (Final/Accepted):** `src/UVa11172.cpp`
+- **Source Code (Final/Accepted):** [src/UVa11172.cpp](src/UVa11172.cpp)
 - **Review Date:** 2026-11-18
 
 ---
