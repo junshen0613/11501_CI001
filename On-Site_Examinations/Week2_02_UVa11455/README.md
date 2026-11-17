@@ -19,7 +19,7 @@
 - **預期輸出是什麼？（What is the expected output?）**
   - 針對每一組四條線段，判斷它們能圍成的圖形並輸出一行對應單字：若為正方形輸出 `square`；若非正方形但為長方形輸出 `rectangle`；若皆非但能構成一般四邊形輸出 `quadrangle`；若無法構成四邊形則輸出 `banana`。
 - **主要規則與限制條件？（What are the main rules or constraints?）**
-  - 輸入的四個邊長若已由小到大排列（$a \le b \le c \le d$），則四邊相等時最小邊等於最大邊（$a = d$）；長方形則為兩對對邊相等（$a = b$ 且 $c = d$，或依測資順序判斷）；一般四邊形需滿足較短邊之和大於最長邊。
+  - 輸入的四個邊長若已由小到大排列（ $a \le b \le c \le d$ ），則四邊相等時最小邊等於最大邊（ $a = d$ ）；長方形則為兩對對邊相等（ $a = b$ 且 $c = d$ ，或依測資順序判斷）；一般四邊形需滿足較短邊之和大於最長邊。
 - **核心解決任務？（What is the core task you must solve?）**
   - 選用正確的 C++ 編譯語言，並依照「正方形 $\rightarrow$ 長方形 $\rightarrow$ 一般四邊形 $\rightarrow$ 無法構成（banana）」的優先順序進行多重條件分類。
 
