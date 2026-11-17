@@ -144,7 +144,7 @@ int main() {
 ### AI Usage Record
 | Problem ID / Title | AI Tool Used | How It Was Used | Verification Performed Independently |
 | :--- | :--- | :--- | :--- |
-| UVa 10071 - Back to High School Physics | Gemini | 協助確認位移公式的代數化簡與邊界條件，並整理 Code Review Report 格式 | 親自於本地編譯測試 $t=0$、$v<0$ 等測資，並上傳 UVa 確認取得 Accepted |
+| UVa 10071 - Back to High School Physics | Gemini | 協助確認位移公式的代數化簡與邊界條件，並整理 Code Review Report 格式 | 親自於本地編譯測試 $t=0$ 、 $v<0$ 等測資，並上傳 UVa 確認取得 Accepted |
 
 ---
 
