@@ -125,7 +125,7 @@ int main() {
 | Item | Fail Code (Initial Draft) | Correct Code |
 | :--- | :--- | :--- |
 | **Logic** | 先求加速度 $a = v/t$ 再代公式 | 直接使用化簡後的公式 $2vt$ |
-| **Edge Cases** | $t = 0$ 時當機；$t \nmid v$ 時失真 | 完美支援 $t = 0$、負速度與非整除組合 |
+| **Edge Cases** | $t = 0$ 時當機； $t \nmid v$ 時失真 | 完美支援 $t = 0$、負速度與非整除組合 |
 | **Output Handling** | 僅處理單行輸入 | 使用 `while (cin >> v >> t)` 處理至 EOF |
 | **Complexity** | $O(1)$ | 每組 $O(1)$ |
 | **Code Quality** | 存在除法風險且缺少多筆測資迴圈 | 簡潔、零誤差的純整數運算 |
