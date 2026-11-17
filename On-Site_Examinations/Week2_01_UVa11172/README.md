@@ -9,7 +9,7 @@
 - **Submission Result:** Accepted
 - **Source Code (Initial/Fail):** [src/UVa11172_fail.cpp](src/UVa11172_fail.cpp)
 - **Source Code (Final/Accepted):** [src/UVa11172.cpp](src/UVa11172.cpp)
-- **Review Date:** 2026-11-18
+- **Review Date:** 2026-9-15
 
 ---
 
