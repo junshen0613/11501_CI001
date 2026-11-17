@@ -7,55 +7,55 @@
 - **Problem Link:** https://onlinejudge.org/external/100/10055.pdf
 - **Language / Version:** C++ (C++17)
 - **Submission Result:** Accepted
-- **Source Code (Initial/Fail):** `src/UVa10055_fail.cpp` (Incomplete initial draft using 32-bit `int`)
+- **Source Code (Initial/Fail):** `src/UVa10055_fail.cpp`（使用 32 位元 `int` 的未完成初版）
 - **Source Code (Final/Accepted):** `src/UVa10055.cpp`
 - **Review Date:** 2026-11-18
 
 ---
 
 ## 2. Problem Statement in My Own Words
-- **What is the input?**
-  - Multiple test cases until End-of-File (EOF). Each line contains two non-negative integers representing the number of soldiers in Hashmat's army and his opponent's army.
-- **What is the expected output?**
-  - For each pair of integers, print a single integer on a new line representing the absolute difference between the two army sizes.
-- **What are the main rules or constraints?**
-  - Input integers can be up to $2^{32}$, which exceeds the range of a standard signed 32-bit integer (`int`, max $2^{31}-1$).
-  - The input order is not guaranteed to have the smaller number first; Hashmat's army can be larger or smaller than the opponent's.
-- **What is the core task you must solve?**
-  - Read pairs of large integers continuously until EOF and output $\vert{}a - b\vert{}$ without integer overflow.
+- **輸入是什麼？（What is the input?）**
+  - 多組測試資料直到檔案結尾（EOF）。每一行包含兩個非負整數，分別代表 Hashmat 軍隊與敵方軍隊的士兵人數。
+- **預期輸出是什麼？（What is the expected output?）**
+  - 針對每一對整數，輸出一行單一整數，代表兩軍士兵人數的「絕對差值」。
+- **主要規則與限制條件？（What are the main rules or constraints?）**
+  - 輸入數值最大可達 $2^{32}$，超過標準有號 32 位元整數（`int`，上限為 $2^{31}-1$）的表示範圍。
+  - 題目並未保證第一個數字一定小於第二個數字（Hashmat 的軍隊人數可能比敵軍多，也可能比敵軍少）。
+- **核心解決任務？（What is the core task you must solve?）**
+  - 持續讀取多組大整數直到 EOF，並在避免整數溢位的前提下正確輸出 $\vert{}a - b\vert{}$。
 
 ---
 
 ## 3. Thinking Logic and Solution Strategy
 
 ### Initial Thoughts
-- **What was your first idea?**
-  - Use `int a, b;` to read two numbers in a `while` loop and print `b - a`.
-- **What difficulty, risk, or ambiguity did you notice at the beginning?**
-  - First, the problem explicitly states that input numbers are not greater than $2^{32}$, which overflows signed 32-bit `int`. Second, Hashmat's army is not always smaller than the opponent's, so `b - a` can yield a negative value.
-- **Why was the initial idea insufficient or inefficient?**
-  - Using `int` causes integer overflow (Wrong Answer) on values $\ge 2^{31}$, and omitting `abs()` produces negative results when $a > b$.
+- **最初的想法是什麼？**
+  - 直接宣告兩個 `int a, b;` 在 `while` 迴圈中讀取，並輸出 `b - a`。
+- **一開始注意到的困難、風險或模糊之處？**
+  - 第一，題目明確提示輸入數值不超過 $2^{32}$，這會導致有號 32 位元 `int` 發生溢位；第二，Hashmat 的兵力不一定少於對方，直接相減 `b - a` 可能會得到負數。
+- **為什麼最初的想法不夠完整或沒有效率？**
+  - 使用 `int` 在數值 $\ge 2^{31}$ 時會溢位導致 Wrong Answer，且未使用絕對值 `abs()` 會在 $a > b$ 時輸出負值。
 
 ### Final Strategy
-- **What method did you finally use?**
-  - Declared both variables as 64-bit signed integers (`long long`) and used `abs(hashmat - opponent)` inside a `while (cin >> hashmat >> opponent)` loop.
-- **Why does this method work?**
-  - A signed 64-bit `long long` holds values up to $2^{63}-1 \approx 9.22 \times 10^{18}$, easily accommodating differences up to $2^{32}$ without overflow. `std::abs` handles both $a \le b$ and $a > b$ cases cleanly.
-- **What edge cases did you consider?**
-  - Maximum boundary values ($0$ and $2^{32}$), equal army sizes ($a = b$), and reversed order ($a > b$).
+- **最終採用什麼方法？**
+  - 將變數型別改為 64 位元有號整數（`long long`），並在 `while (cin >> hashmat >> opponent)` 迴圈內使用 `abs(hashmat - opponent)` 計算差值。
+- **為什麼這個方法有效？**
+  - 64 位元 `long long` 的最大值可達 $2^{63}-1 \approx 9.22 \times 10^{18}$，能完整容納 $2^{32}$ 以內的數值與差值而不溢位；搭配 `std::abs` 可同時正確處理 $a \le b$ 與 $a > b$ 的情況。
+- **考慮了哪些邊界條件（Edge cases）？**
+  - 數值上下界極值（$0$ 與 $2^{32}$）、兩軍人數相等（$a = b$），以及前後大小反轉（$a > b$）。
 
 ### Complexity Analysis
-- **Time Complexity:** $O(1)$ per test case, $O(T)$ overall for $T$ test cases.
-- **Space Complexity:** $O(1)$, using only two 64-bit integer variables.
-- **Explanation:** Each line requires a single subtraction and absolute value operation, easily completing well within the 3.0-second time limit.
+- **Time Complexity:** 每組測資 $O(1)$，總計 $T$ 組測資為 $O(T)$。
+- **Space Complexity:** $O(1)$，僅使用兩個 64 位元整數變數。
+- **Explanation:** 每筆測資只需執行一次減法與取絕對值運算，能遠低於題目 3.0 秒的時間限制完成。
 
 ---
 
 ## 4. Pseudocode
 ```text
 START
-1. WHILE reading two 64-bit integers (hashmat, opponent) from standard input succeeds:
-2.     Compute diff = abs(hashmat - opponent)
-3.     Print diff followed by a newline
+1. WHILE 成功從標準輸入讀取兩個 64 位元整數 (hashmat, opponent):
+2.     計算 diff = abs(hashmat - opponent)
+3.     輸出 diff 並換行
 4. END WHILE
 END
