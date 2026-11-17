@@ -15,7 +15,7 @@
 
 ## 2. Problem Statement in My Own Words
 - **輸入是什麼？（What is the input?）**
-  - 第一行包含一個正整數 $t$（$t < 15$），代表接下來總共有幾組測試資料。接下來的 $t$ 行中，每一行都包含兩個整數 $a$ 與 $b$（$\vert{}a\vert{}, \vert{}b\vert{} < 1000000001$）。
+  - 第一行包含一個正整數 $t$（$t < 15$），代表接下來總共有幾組測試資料。接下來的 $t$ 行中，每一行都包含兩個整數 $a$ 與 $b$（ $\vert{}a\vert{}, \vert{}b\vert{} < 1000000001$ ）。
 - **預期輸出是什麼？（What is the expected output?）**
   - 針對每一對整數 $(a, b)$，各自輸出一行對應的關係運算子：若 $a < b$ 輸出 `<`；若 $a > b$ 輸出 `>`；若兩者相等則輸出 `=`。
 - **主要規則與限制條件？（What are the main rules or constraints?）**
