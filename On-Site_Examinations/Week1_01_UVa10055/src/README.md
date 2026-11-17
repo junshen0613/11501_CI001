@@ -7,7 +7,7 @@
 - **Problem Link:** https://onlinejudge.org/external/100/10055.pdf
 - **Language / Version:** C++ (C++17)
 - **Submission Result:** Accepted
-- **Source Code (Initial/Fail):** N/A（第一週因大二以上加退選時程尚未加選，未參加現場上機考，此為課後補寫之初版草稿）
+- **Source Code (Initial/Fail):** N/A（第一週因大二以上加退選時程尚未加選）
 - **Source Code (Final/Accepted):** `src/UVa10055.cpp`
 - **Review Date:** 2026-11-18
 
