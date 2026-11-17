@@ -7,7 +7,7 @@
 - **Problem Link:** https://onlinejudge.org/external/100/10055.pdf
 - **Language / Version:** C++ (C++17)
 - **Submission Result:** Accepted
-- **Source Code (Initial/Fail):** `src/UVa10055_fail.cpp`（使用 32 位元 `int` 的未完成初版）
+- **Source Code (Initial/Fail):** N/A（第一週因大二以上加退選時程尚未加選，未參加現場上機考，此為課後補寫之初版草稿）
 - **Source Code (Final/Accepted):** `src/UVa10055.cpp`
 - **Review Date:** 2026-11-18
 
@@ -30,11 +30,11 @@
 
 ### Initial Thoughts
 - **最初的想法是什麼？**
-  - 直接宣告兩個 `int a, b;` 在 `while` 迴圈中讀取，並輸出 `b - a`。
+  - 補寫時最初的草稿想法是宣告兩個 `int a, b;` 在 `while` 迴圈中讀取，並輸出 `b - a`。
 - **一開始注意到的困難、風險或模糊之處？**
-  - 第一，題目明確提示輸入數值不超過 $2^{32}$，這會導致有號 32 位元 `int` 發生溢位；第二，Hashmat 的兵力不一定少於對方，直接相減 `b - a` 可能會得到負數。
+  - 檢視題目限制後發現輸入數值上限為 $2^{32}$，使用有號 32 位元 `int` 會發生溢位；且 Hashmat 的兵力不一定少於敵方，直接相減 `b - a` 會產生負數。
 - **為什麼最初的想法不夠完整或沒有效率？**
-  - 使用 `int` 在數值 $\ge 2^{31}$ 時會溢位導致 Wrong Answer，且未使用絕對值 `abs()` 會在 $a > b$ 時輸出負值。
+  - `int` 型別無法容納 $2^{31}$ 至 $2^{32}$ 的數值，且未取絕對值無法處理 $a > b$ 的輸入順序。
 
 ### Final Strategy
 - **最終採用什麼方法？**
@@ -70,7 +70,7 @@ END
 #include <bits/stdc++.h>
 using namespace std;
 
-// 未完成／有缺陷的初版：32 位元 int 溢位且未取絕對值
+// 第一週因加退選尚未入班而缺考；此為課後補寫時最初的未完成草稿（存在 int 溢位與未取絕對值問題）
 int main() {
     int hashmat, opponent;
     while (cin >> hashmat >> opponent) {
@@ -81,7 +81,7 @@ int main() {
 ```
 
 **Why it failed:**
-- **直接技術原因：** 有號 32 位元 `int` 在輸入達到 $2^{31}$ 至 $2^{32}$ 時會發生整數溢位；此外當 `hashmat > opponent` 時，`opponent - hashmat` 會輸出負數。
+- **未完成／缺陷原因：** 第一週開學時因大二以上加退選時程尚未完成加選，未參加當週現場上機考；課後補寫草稿時，若使用 32 位元 `int` 會在輸入達到 $2^{31}$ 至 $2^{32}$ 時發生溢位，且當 `hashmat > opponent` 時直接相減會輸出負數。
 - **會導致錯誤的測資情境：** 輸入 `0 4294967296`（超過 `INT_MAX` 造成溢位）或輸入 `20 10`（錯誤輸出 `-10` 而非 `10`）。
 
 ### Correct Code
@@ -113,14 +113,14 @@ int main() {
 | **Edge case** | `100 100` 與 `200 50` | `0` 與 `150` | `0` 與 `150` | 測試兩數相等以及反序輸入（$a > b$） |
 | **Stress case** | $10^5$ 組最大上限測資 | 皆輸出精確差值 | 皆輸出精確差值 | 驗證連續讀取至 EOF 的 I/O 效率 |
 
-- **關於先前失敗測資的修正說明：** 將資料型別從 `int` 改為 `long long` 並加上 `abs()` 後，成功解決了 $2^{32}$ 溢位與反序輸入輸出負數的問題。
+- **關於補寫與測試的說明：** 補寫完成後已於本地端測試上述四類測資，並正式提交至 UVa Online Judge 確認取得 Accepted。
 
 ---
 
 ## 7. Difference and Reflection
 
 ### Key Differences
-| Item | Fail Code | Correct Code |
+| Item | Fail Code (Initial Draft) | Correct Code |
 | :--- | :--- | :--- |
 | **Logic** | 直接相減（`opponent - hashmat`） | 計算絕對差值 `abs(hashmat - opponent)` |
 | **Edge Cases** | 在 $a > b$ 與數值 $\ge 2^{31}$ 時失敗 | 正確處理 $a > b$、$a = b$ 與高達 $2^{32}$ 的數值 |
@@ -129,7 +129,7 @@ int main() {
 | **Code Quality** | 整數寬度不足，有溢位風險 | 符合題目數值範圍的安全 64 位元型別 |
 
 ### Reflection
-- **根本原因（Root cause）：** 讀題時忽略了數值上限可達 $2^{32}$ 的條件，且誤以為第一個數字一定小於第二個數字。
+- **根本原因（Root cause）：** 第一週因加退選尚未入班而錯過現場練習，補題時初期容易忽略題目給定的數值上限（$2^{32}$）以及輸入大小順序不固定的細節。
 - **學到的教訓（Lesson learned）：** 只要題目給定的數值上限達到 $2^{32}$（或超過 $10^9$ 且涉及加減運算），在 C++ 中應一律優先使用 `long long`。
 - **下一步行動（Next action）：** 未來解題前先確認輸入數值的最大範圍與正負號保證，再決定變數型別。
 
