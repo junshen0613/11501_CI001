@@ -9,7 +9,7 @@
 - **Submission Result:** Accepted (Initial submission: Compile Error due to wrong language selection)
 - **Source Code (Initial/Fail):** [src/UVa11455_fail.cpp](src/UVa11455_fail.cpp)
 - **Source Code (Final/Accepted):** [src/UVa11455.cpp](src/UVa11455.cpp)
-- **Review Date:** 2026-11-18
+- **Review Date:** 2026-9-15
 
 ---
 
