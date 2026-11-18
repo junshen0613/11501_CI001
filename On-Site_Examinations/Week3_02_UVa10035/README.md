@@ -150,7 +150,7 @@ int main()
 ### Key Differences
 | Item | Initial Incomplete Draft | Correct Code (First-Submission AC) |
 | :--- | :--- | :--- |
-| **Logic** | 僅檢查個位數一次 | 使用 while (a > 0 || b > 0)  逐位剝離檢查 |
+| **Logic** | 僅檢查個位數一次 | 使用 `while (a > 0 || b > 0)`  逐位剝離檢查 |
 | **Edge Cases** | 未處理不同位數長度與 `0 0` 結束 | 支援不同位數長度、`0 0` 終止與多種進位次數 |
 | **Output Handling** | 僅支援 `0` 或 `1` 次進位 | 完整區分 `No`、`1 ... operation.` 與 `N ... operations.` |
 | **Complexity** | $O(1)$（未完成） | $O(\log_{10}(\max(a, b)))$ per case |
